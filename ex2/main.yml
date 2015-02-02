@@ -1,0 +1,12 @@
+---
+- hosts: local
+  tasks:
+    - name: Generate lab configuration files...
+      template: src=/home/myost/labs/week3/ex2/switch.j2 dest=/home/myost/labs/week3/ex2/scripts/{{item.hostname}}.txt
+          
+      with_items:
+        - { hostname: BUF-switch1, secret: my_secret, ip_addr: 10.0.0.254, default_gateway: 10.0.0.1, access_vlan: 10, snmp_community: ineedcoffee, SNMPV3: True }
+        - { hostname: ROC-switch1, secret: my_secret, ip_addr: 10.1.0.254, default_gateway: 10.1.0.1, access_vlan: 10, snmp_community: ineedcoffee, SNMPV3: False }
+        - { hostname: SYR-switch1, secret: my_secret, ip_addr: 10.2.0.254, default_gateway: 10.2.0.1, access_vlan: 10, snmp_community: ineedcoffee, SNMPV3: True }
+        - { hostname: ALB-switch1, secret: my_secret, ip_addr: 10.3.0.254, default_gateway: 10.3.0.1, access_vlan: 10, snmp_community: ineedcoffee, SNMPV3: False }
+        - { hostname: NYC-switch1, secret: my_secret, ip_addr: 10.4.0.254, default_gateway: 10.4.0.1, access_vlan: 10, snmp_community: ineedcoffee, SNMPV3: True }
